@@ -191,6 +191,7 @@
   height: 85vh; 
   position: fixed; 
   bottom: 0; 
+
 }
 
 .icons {
@@ -200,12 +201,109 @@
   transform: translate(-50%, -50%); 
   list-style: none; 
   display: flex; 
-  width: 60%; 
+  width: 80%; 
   justify-content: space-between; 
+}
+
+.icon-item {
+  /* 3D- effect */ 
+  perspective: 1000px; 
+}
+
+.icon-link {
+  display: block; 
+  width: 200px; 
+  height: 200px; 
+  border: 8px solid #fff; 
+  border-radius: 5px;
+  text-decoration: none;
+
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+
+  /* 3D effect */ 
+  transform-style: preserve-3d; 
+  transition: transform .5s ease; 
+}
+
+.icon-link:hover {
+  transform: rotateY(35deg); 
+}
+
+.icon-link::before {
+  content: ''; 
+  height: 24px;
+  width: 5px; 
+  background-color: white; 
+  position: absolute; 
+  top: 0; 
+}
+
+.icon-link::after {
+  content: ''; 
+  height: 24px;
+  width: 5px; 
+  background-color: white; 
+  position: absolute; 
+  bottom: 0; 
 }
 
 .icon-link i {
   color: white; 
-  font-sizE: 60px; 
+  font-size: 60px; 
+  width: 150px; 
+  height: 150px; 
+  /* here we use flex box to manipulate content of i tag (the icon) */ 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+
+  background-color: #555; 
+  border: 3px solid #fff; 
+  text-shadow: 0 10px 20px rgba(0,0,0,.5); 
+  overflow: hidden; 
+
+  transition: all .5s ease; 
+  position: relative; 
 }
 
+.icon-link:hover i {
+  transform: rotateY(-70deg); 
+  text-shadow: 10px 10px 20px rgba(0,0,0,.5); 
+}
+
+.icon-link i::after {
+  content: ''; 
+  height: 100%; 
+  width: 100%; 
+
+  position: absolute; 
+  top: -130%; 
+  right: -130%; 
+  border-radius: 50%; 
+  transition: all .3s ease; 
+  z-index: -1; 
+}
+
+.icon-link:hover i::after {
+  top: 0; 
+  right: 0; 
+  border-radius: 0%; 
+}
+
+.icons-item:nth-child(1) .icon-link i::after {
+  background-color: #55acee; 
+}
+
+.icons-item:nth-child(2) .icon-link i::after {
+  background-color: #cd201f; 
+}
+
+.icons-item:nth-child(3) .icon-link i::after {
+  background-color: #55acee; 
+}
+
+.icons-item:nth-child(4) .icon-link i::after {
+  background-color: #dd4bc9; 
+}
